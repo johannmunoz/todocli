@@ -24,3 +24,13 @@ todocli add -title
 # mark todo as done by ID
 todocli done -id
 ```
+
+# Using prod image
+
+```
+# build prod image
+docker build . -t todocli
+
+# use prod image
+docker run -it todocli get -all 
+```

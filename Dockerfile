@@ -4,10 +4,14 @@ WORKDIR /work
 
 FROM golang:1.18-alpine as build
 
-WORKDIR /app
-COPY ./app/* /app/
-RUN go build -o app
+WORKDIR /todocli
+COPY ./todocli/* /todocli/
+RUN go build -o todocli
 
 FROM alpine as runtime 
-COPY --from=build /app/app /
-CMD ./app
+COPY --from=build /todocli/todocli /usr/local/bin/todocli
+COPY ./todocli/todos.json /
+COPY run.sh /
+RUN chmod +x /run.sh
+
+ENTRYPOINT ["./run.sh"]
