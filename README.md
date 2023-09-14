@@ -1,7 +1,7 @@
 # todocli
 # Run Go in Docker
 ```shell
-docker run -it -v ${PWD}:/work go sh
+docker run -it -v ${PWD}:/work golang sh
 go version
 ```
 # Using CLI
